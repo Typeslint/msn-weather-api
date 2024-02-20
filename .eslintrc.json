@@ -1,0 +1,30 @@
+{
+    "env": {
+        "node": true,
+        "commonjs": true,
+        "es2022": true,
+        "jest": true
+    },
+    "extends": "eslint:recommended",
+    "parserOptions": {
+        "ecmaVersion": 13
+    },
+    "rules": {
+        "comma-dangle": ["warn", "never"],
+        "comma-style": ["warn", "last"],
+        "eol-last": ["warn", "always"],
+        "indent": ["warn", 4, {
+            "MemberExpression": 0
+        }],
+        "no-multiple-empty-lines": ["warn", {
+            "max": 1,
+            "maxEOF": 0
+        }],
+        "no-trailing-spaces": 1,
+        "no-unused-vars": 1,
+        "no-useless-escape": 0,
+        "semi": 1,
+        "semi-style": ["warn", "last"],
+        "quotes": ["warn", "single"]
+    }
+}

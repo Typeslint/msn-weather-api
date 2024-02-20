@@ -1,0 +1,25 @@
+{
+  "name": "msn-weather-xml",
+  "version": "0.1.0",
+  "description": "msn weather",
+  "main": "index.cjs",
+  "type": "commonjs",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "Muunatic",
+  "license": "ISC",
+  "dependencies": {
+    "xml2js": "0.6.x"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.12",
+    "eslint": "^8.56.0",
+    "jest": "^29.7.0"
+  },
+  "engines": {
+    "node": "18.19.1",
+    "npm": "10.2.4"
+  }
+}
