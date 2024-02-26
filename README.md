@@ -5,11 +5,12 @@ Weather forecast by MSN weather.
 # Usage
 
 ```js
-const weatherjs = require('msn-weather-xml');
-const weather = new weatherjs('en', 'c');
+const msnweather = require('msn-weather-xml');
+const weather = new msnweather('en', 'c');
 
 (async () => {
-    (await weather.getCurrentData('kyoto')).location;
+    (await weather.getCurrentData('kyoto')).weather;
+    (await weather.getForecastData('kyoto')).weather;
 })();
 ```
 
