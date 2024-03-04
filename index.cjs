@@ -73,6 +73,8 @@ class WeatherMSN {
      */
     async getForecastData(search, days) {
 
+        days -= 1;
+
         if (!search && !days) {
             throw new Error('Please provide a valid search parameter and days parameter');
         }
@@ -81,8 +83,8 @@ class WeatherMSN {
             throw new Error('Please provide a valid day type');
         }
 
-        if (days < 0 || days > 5) {
-            throw new Error('Days parameter can\'t be less than zero or greater than five');
+        if (days < 0 || days > 4) {
+            throw new Error('Days parameter can\'t be less than one or greater than five');
         }
 
         const msnWeatherUrl = `http://weather.service.msn.com/find.aspx?src=outlook&weasearchstr=${search}&weadegreetype=${this.#degree}&culture=${this.#lang}`;
