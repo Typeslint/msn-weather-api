@@ -1,19 +1,23 @@
 const msnweather = require('../index.cjs');
-const weather = new msnweather('en', 'c');
+const weatherjs = new msnweather('en', 'c');
 
-test('Get getCurrentData()', async () => {
-    expect((await weather.getCurrentData('kyoto')).temperature).toBeDefined();
-    expect((await weather.getCurrentData('kyoto')).weather).toBeDefined();
-    expect((await weather.getCurrentData('kyoto')).humidity).toBeDefined();
-    expect((await weather.getCurrentData('kyoto')).windspeed).toBeDefined();
-    expect((await weather.getCurrentData('kyoto')).location).toBeDefined();
-});
+describe('MSN Weather Data', () => {
+    test('Get getCurrentData()', async () => {
+        const { temperature, humidity, location, weather, windspeed } = (await weatherjs.getCurrentData('kyoto'));
+        expect(temperature).toBeDefined();
+        expect(humidity).toBeDefined();
+        expect(location).toBeDefined();
+        expect(weather).toBeDefined();
+        expect(windspeed).toBeDefined();
+    });
 
-test('Get getForecastData()', async () => {
-    expect((await weather.getForecastData('kyoto', 1)).lowTemperature).toBeDefined();
-    expect((await weather.getForecastData('kyoto', 1)).highTemperature).toBeDefined();
-    expect((await weather.getForecastData('kyoto', 1)).date).toBeDefined();
-    expect((await weather.getForecastData('kyoto', 1)).day).toBeDefined();
-    expect((await weather.getForecastData('kyoto', 1)).weather).toBeDefined();
-    expect((await weather.getForecastData('kyoto', 1)).location).toBeDefined();
+    test('Get getForecastData()', async () => {
+        const { date, day, highTemperature, location, lowTemperature, weather } = (await weatherjs.getForecastData('kyoto', 1));
+        expect(date).toBeDefined();
+        expect(day).toBeDefined();
+        expect(highTemperature).toBeDefined();
+        expect(location).toBeDefined();
+        expect(lowTemperature).toBeDefined();
+        expect(weather).toBeDefined();
+    });
 });
