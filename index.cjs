@@ -73,8 +73,6 @@ class WeatherMSN {
      */
     async getForecastData(search, days) {
 
-        days -= 1;
-
         if (!search && !days) {
             throw new Error('Please provide a valid search parameter and days parameter');
         }
@@ -82,6 +80,8 @@ class WeatherMSN {
         if (typeof days !== 'number') {
             throw new Error('Please provide a valid day type');
         }
+
+        days -= 1;
 
         if (days < 0 || days > 4) {
             throw new Error('Days parameter can\'t be less than one or greater than five');
