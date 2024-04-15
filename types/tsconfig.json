@@ -1,0 +1,18 @@
+{
+    "compilerOptions": {
+        "module": "CommonJS",
+        "lib": [
+            "ES2022"
+        ],
+        "forceConsistentCasingInFileNames": true,
+        "noEmit": true,
+        "noImplicitAny": true,
+        "noImplicitThis": true,
+        "strictFunctionTypes": true,
+        "strictNullChecks": true
+    },
+    "include": [
+        "index.d.ts",
+        "global.d.ts"
+    ]
+}
