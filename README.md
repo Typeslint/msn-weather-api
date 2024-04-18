@@ -11,7 +11,7 @@ const weather = new msnweather('en', 'c');
 
 (async () => {
     (await weather.getCurrentData('kyoto')).weather;
-    (await weather.getForecastData('kyoto')).weather;
+    (await weather.getForecastData('kyoto', 1)).weather;
 })();
 ```
 
