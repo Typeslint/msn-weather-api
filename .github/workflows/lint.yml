@@ -1,0 +1,26 @@
+name: Run Linter
+
+on:
+  push:
+    branches: [ development ]
+  pull_request:
+    branches: [ development ]
+
+jobs:
+  lint:
+    runs-on: windows-latest
+    strategy:
+      matrix:
+        node-version: [18.20.2]
+    steps:
+    - uses: actions/checkout@v3
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: Install npm
+      run: npm install npm@10.5.0 -g
+    - name: Install dependencies
+      run: npm ci
+    - name: Run linter
+      run: npm run lint --if-present
