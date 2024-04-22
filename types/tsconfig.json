@@ -12,7 +12,6 @@
         "strictNullChecks": true
     },
     "include": [
-        "index.d.ts",
-        "global.d.ts"
+        "*.d.ts"
     ]
 }
