@@ -51,17 +51,17 @@ class WeatherMSN {
             humidity = data.weatherdata.weather[0].current[0]['$'].humidity;
             windspeed = data.weatherdata.weather[0].current[0]['$'].windspeed;
             location = data.weatherdata.weather[0].current[0]['$'].observationpoint;
+
+            return {
+                temperature,
+                weather,
+                humidity,
+                windspeed,
+                location
+            };
         } catch (err) {
             throw new Error('Error fetching or parsing weather data');
         }
-
-        return {
-            temperature,
-            weather,
-            humidity,
-            windspeed,
-            location
-        };
     }
 
     /**
@@ -104,18 +104,18 @@ class WeatherMSN {
             day = data.weatherdata.weather[0].forecast[days]['$'].day;
             weather = data.weatherdata.weather[0].forecast[days]['$'].skytextday;
             location = data.weatherdata.weather[0].current[0]['$'].observationpoint;
+
+            return {
+                lowTemperature,
+                highTemperature,
+                date,
+                day,
+                weather,
+                location
+            };
         } catch (err) {
             throw new Error('Error fetching or parsing weather data');
         }
-
-        return {
-            lowTemperature,
-            highTemperature,
-            date,
-            day,
-            weather,
-            location
-        };
     }
 }
 
