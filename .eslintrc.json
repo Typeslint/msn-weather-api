@@ -16,6 +16,7 @@
         "indent": ["warn", 4, {
             "MemberExpression": 0
         }],
+        "no-console": ["warn", { "allow": ["warn", "error"] }],
         "no-multiple-empty-lines": ["warn", {
             "max": 1,
             "maxEOF": 0
