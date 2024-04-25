@@ -5,6 +5,8 @@ declare module 'msn-weather-api' {
         humidity: string;
         windspeed: string;
         location: string;
+        date: string;
+        icon: string;
     };
     
     type ForecastData = {
@@ -14,6 +16,7 @@ declare module 'msn-weather-api' {
         day: string;
         weather: string;
         location: string;
+        icon: string;
     };
     
     class WeatherMSN {
