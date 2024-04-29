@@ -2,6 +2,14 @@ const msnweather = require('../index.cjs');
 const weatherjs = new msnweather('en', 'c');
 
 describe('Validate MSN Weather', () => {
+    test('Valid lang parameter', () => {
+        expect(() => new msnweather(null, 'c')).toThrow(/^Please provide a valid lang parameter$/g);
+    });
+
+    test('Invalid degree parameter', () => {
+        expect(() => new msnweather('en', null)).toThrow(/^Please provide a valid degree parameter$/g);
+    });
+
     test('Valid search parameter in getCurrentData()', async () => {
         await expect(weatherjs.getCurrentData('kyoto')).resolves.not.toThrow();
     });
@@ -11,7 +19,7 @@ describe('Validate MSN Weather', () => {
     });
 
     test('Invalid location in getCurrentData()', async () => {
-        await expect(weatherjs.getCurrentData('msnweather')).rejects.toThrow('Error fetching or parsing weather data');
+        await expect(weatherjs.getCurrentData('msnweather')).rejects.toThrow(/^Error fetching or parsing weather data$/g);
     });
 
     test('Valid search and days parameters in getForecastData()', async () => {
@@ -23,7 +31,7 @@ describe('Validate MSN Weather', () => {
     });
 
     test('Invalid location in getForecastData()', async () => {
-        await expect(weatherjs.getForecastData('msnweather', 1)).rejects.toThrow('Error fetching or parsing weather data');
+        await expect(weatherjs.getForecastData('msnweather', 1)).rejects.toThrow(/^Error fetching or parsing weather data$/g);
     });
 
     test('Non-number days parameter in getForecastData()', async () => {
