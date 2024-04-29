@@ -21,6 +21,9 @@ class WeatherMSN {
     constructor(lang, degree) {
         this.#lang = lang;
         this.#degree = degree;
+
+        if (!this.#lang) throw new Error('Please provide a valid lang parameter');
+        if (!this.#degree) throw new Error('Please provide a valid degree parameter');
     }
 
     /**
