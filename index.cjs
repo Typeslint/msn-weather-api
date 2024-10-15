@@ -22,8 +22,10 @@ class WeatherMSN {
         this.#lang = lang;
         this.#degree = degree;
 
-        if (!this.#lang) throw new Error('Please provide a valid lang parameter');
-        if (!this.#degree) throw new Error('Please provide a valid degree parameter');
+        if (!this.#lang || typeof this.#lang !== 'string') throw new Error('Please provide a valid lang parameter');
+        if (!this.#degree || typeof this.#degree !== 'string') throw new Error('Please provide a valid degree parameter');
+
+        if (this.#degree.toLowerCase() !== 'c' && this.#degree.toLowerCase() !== 'f') throw new Error('Invalid degree, must be either "C" or "F"');
     }
 
     /**
