@@ -2,12 +2,24 @@ const msnweather = require('../index.cjs');
 const weatherjs = new msnweather('en', 'c');
 
 describe('Validate MSN Weather', () => {
-    test('Valid lang parameter', () => {
-        expect(() => new msnweather(null, 'c')).toThrow(/^Please provide a valid lang parameter$/g);
+    test('Invalid lang parameter: null', () => {
+        expect(() => new msnweather(null, 'c')).toThrow(/^Please provide a valid lang parameter$/);
     });
 
-    test('Invalid degree parameter', () => {
-        expect(() => new msnweather('en', null)).toThrow(/^Please provide a valid degree parameter$/g);
+    test('Invalid lang parameter: int', () => {
+        expect(() => new msnweather(123, 'c')).toThrow(/^Please provide a valid lang parameter$/);
+    });
+
+    test('Invalid degree parameter: null', () => {
+        expect(() => new msnweather('en', null)).toThrow(/^Please provide a valid degree parameter$/);
+    });
+
+    test('Invalid degree parameter: int', () => {
+        expect(() => new msnweather('en', 123)).toThrow(/^Please provide a valid degree parameter$/);
+    });
+
+    test('Invalid degree parameter: not "C" or "F"', () => {
+        expect(() => new msnweather('en', 'x')).toThrow(/^Invalid degree, must be either "C" or "F"$/);
     });
 
     test('Valid search parameter in getCurrentData()', async () => {
