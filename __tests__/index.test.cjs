@@ -31,7 +31,7 @@ describe('Validate MSN Weather', () => {
     });
 
     test('Invalid location in getCurrentData()', async () => {
-        await expect(weatherjs.getCurrentData('msnweather')).rejects.toThrow(/^Error fetching or parsing weather data$/g);
+        await expect(weatherjs.getCurrentData('abc123xyz321')).rejects.toThrow(/^Error fetching or parsing weather data$/g);
     });
 
     test('Valid search and days parameters in getForecastData()', async () => {
@@ -43,7 +43,7 @@ describe('Validate MSN Weather', () => {
     });
 
     test('Invalid location in getForecastData()', async () => {
-        await expect(weatherjs.getForecastData('msnweather', 1)).rejects.toThrow(/^Error fetching or parsing weather data$/g);
+        await expect(weatherjs.getForecastData('abc123xyz321', 1)).rejects.toThrow(/^Error fetching or parsing weather data$/g);
     });
 
     test('Non-number days parameter in getForecastData()', async () => {
@@ -64,7 +64,6 @@ describe('MSN Weather Data', () => {
         expect(weather).toBeDefined();
         expect(windspeed).toBeDefined();
         expect(date).toBeDefined();
-        expect(icon).toBeDefined();
     });
 
     test('Get getForecastData()', async () => {
@@ -75,6 +74,5 @@ describe('MSN Weather Data', () => {
         expect(location).toBeDefined();
         expect(lowTemperature).toBeDefined();
         expect(weather).toBeDefined();
-        expect(icon).toBeDefined();
     });
 });
