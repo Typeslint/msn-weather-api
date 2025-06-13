@@ -42,7 +42,7 @@ class WeatherMSN {
 
         const msnWeatherUrl = `http://weather.service.msn.com/find.aspx?src=outlook&weasearchstr=${search}&weadegreetype=${this.#degree}&culture=${this.#lang}`;
 
-        let temperature, weather, humidity, windspeed, location, date, icon;
+        let temperature, weather, humidity, windspeed, location, date;
 
         try {
             const response = await fetch(msnWeatherUrl, {
@@ -57,7 +57,6 @@ class WeatherMSN {
             windspeed = data.weatherdata.weather[0].current[0]['$'].windspeed;
             location = data.weatherdata.weather[0].current[0]['$'].observationpoint;
             date = data.weatherdata.weather[0].current[0]['$'].date;
-            icon = data.weatherdata.weather[0]['$'].imagerelativeurl + 'law/' + data.weatherdata.weather[0].current[0]['$'].skycode;
 
             return {
                 temperature,
@@ -65,8 +64,7 @@ class WeatherMSN {
                 humidity,
                 windspeed,
                 location,
-                date,
-                icon
+                date
             };
         } catch (err) {
             throw new Error('Error fetching or parsing weather data');
@@ -98,7 +96,7 @@ class WeatherMSN {
 
         const msnWeatherUrl = `http://weather.service.msn.com/find.aspx?src=outlook&weasearchstr=${search}&weadegreetype=${this.#degree}&culture=${this.#lang}`;
 
-        let lowTemperature, highTemperature, date, day, weather, location, icon;
+        let lowTemperature, highTemperature, date, day, weather, location;
 
         try {
             const response = await fetch(msnWeatherUrl, {
@@ -113,7 +111,6 @@ class WeatherMSN {
             day = data.weatherdata.weather[0].forecast[days]['$'].day;
             weather = data.weatherdata.weather[0].forecast[days]['$'].skytextday;
             location = data.weatherdata.weather[0].current[0]['$'].observationpoint;
-            icon = data.weatherdata.weather[0]['$'].imagerelativeurl + 'law/' + data.weatherdata.weather[0].forecast[days]['$'].skycode;
 
             return {
                 lowTemperature,
@@ -121,8 +118,7 @@ class WeatherMSN {
                 date,
                 day,
                 weather,
-                location,
-                icon
+                location
             };
         } catch (err) {
             throw new Error('Error fetching or parsing weather data');
